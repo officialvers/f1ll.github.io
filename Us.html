@@ -1,66 +1,295 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-<meta charset="UTF-8">
-<title>Про нас</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Про нас — Ліцей №1</title>
+  
+  <style>
+    @charset "UTF-8";
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      background: #f0f6ff;
+      color: #1a1a1a;
+      line-height: 1.65;
+    }
+
+    /* Навігація */
+    nav {
+      background: #004a99;
+      padding: 1rem;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 500;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: rgba(255,255,255,0.15);
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2.3rem;
+      cursor: pointer;
+    }
+
+    /* Шапка */
+    header {
+      background: #2a7fff;
+      color: white;
+      text-align: center;
+      padding: clamp(3.5rem, 9vw, 6rem) 1rem 4.5rem;
+    }
+
+    header h1 {
+      font-size: clamp(2.4rem, 7.5vw, 4.5rem);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Основний контент */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.2rem 4rem;
+    }
+
+    section {
+      margin: 3.5rem 0;
+    }
+
+    h2 {
+      color: #004a99;
+      font-size: clamp(1.8rem, 5.5vw, 2.6rem);
+      margin-bottom: 1.3rem;
+      position: relative;
+      padding-bottom: 0.6rem;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background: #2a7fff;
+      border-radius: 2px;
+    }
+
+    p {
+      font-size: 1.08rem;
+      margin-bottom: 1.1rem;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+      font-size: 1.08rem;
+    }
+
+    ul li {
+      padding: 0.8rem 0 0.8rem 2.2rem;
+      position: relative;
+    }
+
+    ul li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: #2a7fff;
+      font-weight: bold;
+    }
+
+    /* Футер */
+    footer {
+      background: #003366;
+      color: #e0f0ff;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 4rem;
+    }
+
+    /* Мобільна адаптація */
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #004a99;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 1rem 0;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        display: block;
+        text-align: center;
+        margin: 0;
+        padding: 1.1rem 1.5rem;
+        font-size: 1.15rem;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      main {
+        padding: 2rem 1.2rem 3.5rem;
+      }
+
+      section {
+        margin: 2.8rem 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: clamp(2.8rem, 12vw, 5rem) 0.9rem 3.5rem;
+      }
+
+      h2 {
+        font-size: 1.9rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <nav>
-<a href="index.html">Головна</a>
-<a href="about.html">Про нас</a>
-<a href="news.html">Новини</a>
-<a href="contacts.html">Контакти</a>
+  <div class="nav-container">
+    <div class="logo">Ліцей №1</div>
+    
+    <button class="hamburger" aria-label="Відкрити меню">☰</button>
+    
+    <div class="nav-links" id="navMenu">
+      <a href="index.html">Головна</a>
+      <a href="about.html" class="active">Про нас</a>
+      <a href="news.html">Новини</a>
+      <a href="contacts.html">Контакти</a>
+    </div>
+  </div>
 </nav>
 
 <header>
-<h1>Про наш заклад освіти</h1>
+  <h1>Про наш заклад освіти</h1>
 </header>
 
 <main>
 
-<section>
-<h2>Наша історія</h2>
-<p>
-Наш заклад освіти працює багато років і має гарні традиції навчання 
-та виховання учнів. Ми прагнемо створити комфортні умови для розвитку 
-кожної дитини.
-</p>
-</section>
+  <section>
+    <h2>Наша історія</h2>
+    <p>
+      Наш заклад освіти працює багато років і має гарні традиції навчання 
+      та виховання учнів. Ми прагнемо створити комфортні умови для розвитку 
+      кожної дитини, поєднуючи найкращі педагогічні практики минулого 
+      з сучасними підходами до освіти.
+    </p>
+  </section>
 
-<section>
-<h2>Наша місія</h2>
-<p>
-Ми допомагаємо учням здобувати знання, розвивати таланти 
-та формувати відповідальних громадян України.
-</p>
-</section>
+  <section>
+    <h2>Наша місія</h2>
+    <p>
+      Ми допомагаємо учням здобувати міцні знання, розвивати таланти, 
+      критичне мислення та формувати відповідальних, патріотичних громадян України, 
+      готових до викликів сьогодення та майбутнього.
+    </p>
+  </section>
 
-<section>
-<h2>Наші переваги</h2>
-<ul>
-<li>Кваліфіковані вчителі</li>
-<li>Сучасні методи навчання</li>
-<li>Цікаві гуртки та заходи</li>
-<li>Дружня атмосфера</li>
-</ul>
-</section>
+  <section>
+    <h2>Наші переваги</h2>
+    <ul>
+      <li>Кваліфіковані вчителі з великим досвідом та постійним професійним розвитком</li>
+      <li>Сучасні методи навчання та використання цифрових технологій</li>
+      <li>Цікаві гуртки, спортивні секції, творчі студії та позашкільні заходи</li>
+      <li>Дружня, безпечна та підтримуюча атмосфера в колективі</li>
+      <li>Індивідуальний підхід до кожного учня</li>
+    </ul>
+  </section>
 
-<section>
-<h2>Наш колектив</h2>
-<p>
-У нашому закладі працюють досвідчені педагоги, які щодня допомагають 
-учням відкривати нові знання та розвивати свої здібності.
-</p>
-</section>
+  <section>
+    <h2>Наш колектив</h2>
+    <p>
+      У нашому закладі працюють досвідчені педагоги, які щодня допомагають 
+      учням відкривати нові знання, розвивати свої здібності та вірити у власні сили. 
+      Багато наших вчителів мають вищу категорію, звання «вчитель-методист» 
+      та є переможцями професійних конкурсів.
+    </p>
+  </section>
 
 </main>
 
 <footer>
-<p>© 2026 Заклад освіти</p>
+  <p>© 2026 Ліцей №1. Усі права захищено.</p>
 </footer>
+
+<script>
+// Простий скрипт для бургер-меню
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('#navMenu');
+
+  hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    hamburger.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+  });
+
+  // Закриваємо меню після кліку по посиланню
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('active');
+      hamburger.textContent = '☰';
+    });
+  });
+});
+</script>
 
 </body>
 </html>
