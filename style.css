@@ -1,51 +1,177 @@
 @charset "UTF-8";
 
-body{
-margin:0;
-font-family:Arial;
-background:#f0f6ff;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-nav{
-background:#004a99;
-padding:15px;
-text-align:center;
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: #f0f6ff;
+  color: #1a1a1a;
+  line-height: 1.6;
 }
 
-nav a{
-color:white;
-text-decoration:none;
-margin:20px;
-font-size:18px;
+/* ─────────────── Навігація ─────────────── */
+nav {
+  background: #004a99;
+  padding: 1rem;
 }
 
-header{
-background:#2a7fff;
-color:white;
-text-align:center;
-padding:40px;
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-main{
-width:80%;
-margin:auto;
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.6rem 1rem;
+  transition: background 0.2s;
 }
 
-section{
-margin-top:30px;
+nav a:hover,
+nav a:focus {
+  background: rgba(255,255,255,0.15);
+  border-radius: 6px;
 }
 
-article{
-background:white;
-padding:15px;
-margin:15px 0;
-border-radius:10px;
+/* Бургер-меню */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
 }
 
-footer{
-background:#003366;
-color:white;
-text-align:center;
-padding:15px;
-margin-top:40px;
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* ─────────────── Шапка ─────────────── */
+header {
+  background: #2a7fff;
+  color: white;
+  text-align: center;
+  padding: clamp(3rem, 8vw, 5rem) 1rem 4rem;
+}
+
+header h1 {
+  font-size: clamp(2.3rem, 7vw, 4.2rem);
+  margin-bottom: 0.6rem;
+}
+
+header p {
+  font-size: clamp(1.1rem, 4vw, 1.4rem);
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0.95;
+}
+
+/* ─────────────── Основний контент ─────────────── */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem 2rem;
+}
+
+section {
+  margin: 3rem 0;
+}
+
+h2 {
+  color: #004a99;
+  font-size: clamp(1.7rem, 5vw, 2.4rem);
+  margin-bottom: 1.2rem;
+}
+
+article {
+  background: white;
+  padding: 1.4rem;
+  margin: 1.2rem 0;
+  border-radius: 10px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+article:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* ─────────────── Футер ─────────────── */
+footer {
+  background: #003366;
+  color: white;
+  text-align: center;
+  padding: 1.8rem 1rem;
+  margin-top: 3rem;
+}
+
+/* ─────────────── Мобільна адаптація ─────────────── */
+@media (max-width: 768px) {
+
+  .nav-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #004a99;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 1rem 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  nav a {
+    display: block;
+    margin: 0;
+    padding: 1rem 1.5rem;
+    font-size: 1.15rem;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  main {
+    padding: 0 1.2rem 2.5rem;
+  }
+
+  section {
+    margin: 2.5rem 0;
+  }
+
+  article {
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: clamp(2.5rem, 10vw, 4rem) 0.8rem 3rem;
+  }
+
+  nav {
+    padding: 0.9rem 1rem;
+  }
 }
