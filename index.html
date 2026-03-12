@@ -6,7 +6,6 @@
   <title>Ліцей №1</title>
   
   <style>
-    /* Скидаємо базові відступи */
     * {
       margin: 0;
       padding: 0;
@@ -20,11 +19,13 @@
       background-color: #f9f9f9;
     }
 
-    /* ── Навігація ── */
+    /* Навігація */
     nav {
       background-color: #1e40af;
       color: white;
       padding: 1rem;
+      position: relative;
+      z-index: 100;
     }
 
     .nav-container {
@@ -56,7 +57,6 @@
       color: #dbeafe;
     }
 
-    /* Бургер-іконка */
     .hamburger {
       display: none;
       font-size: 2rem;
@@ -66,7 +66,57 @@
       cursor: pointer;
     }
 
-    /* ── Шапка ── */
+    /* Мобільне меню – випадає вгорі під nav */
+    .nav-links.mobile {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links:not(.mobile) {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .nav-links.mobile {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;               /* відразу під навбаром */
+        left: 0;
+        right: 0;
+        background: #1e40af;
+        padding: 1rem 0;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+        z-index: 99;
+      }
+
+      .nav-links.mobile.active {
+        display: flex;
+      }
+
+      .nav-links.mobile a {
+        padding: 1rem 2rem;
+        font-size: 1.15rem;
+        border-bottom: 1px solid rgba(255,255,255,0.15);
+      }
+
+      .nav-links.mobile a:last-child {
+        border-bottom: none;
+      }
+
+      header {
+        padding: 3rem 1rem 2.5rem;
+      }
+
+      main {
+        padding: 1.5rem 1rem;
+      }
+    }
+
+    /* решта стилів без змін */
     header {
       background: linear-gradient(to right, #1e3a8a, #3b82f6);
       color: white;
@@ -86,7 +136,6 @@
       margin: 0 auto;
     }
 
-    /* ── Основний контент ── */
     main {
       max-width: 1200px;
       margin: 0 auto;
@@ -111,13 +160,11 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
-    /* ── Контакти ── */
     .contacts p {
       font-size: 1.1rem;
       margin: 0.6rem 0;
     }
 
-    /* ── Футер ── */
     footer {
       background-color: #1e293b;
       color: #cbd5e1;
@@ -126,42 +173,10 @@
       margin-top: 3rem;
     }
 
-    /* ── Мобільна версія ── */
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: #1e40af;
-        padding: 1rem;
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      .hamburger {
-        display: block;
-      }
-
-      header {
-        padding: 3rem 1rem 2.5rem;
-      }
-
-      main {
-        padding: 1.5rem 1rem;
-      }
-    }
-
-    /* Дуже маленькі екрани (наприклад < 380px) */
     @media (max-width: 480px) {
       header {
         padding: 2.5rem 0.8rem 2rem;
       }
-
       .contacts p {
         font-size: 1rem;
       }
@@ -177,7 +192,16 @@
     
     <button class="hamburger" aria-label="Відкрити меню">☰</button>
     
-    <div class="nav-links" id="navMenu">
+    <!-- Десктопне меню -->
+    <div class="nav-links">
+      <a href="Index.html">Головна</a>
+      <a href="Us.html">Про нас</a>
+      <a href="#">Новини</a>
+      <a href="#">Контакти</a>
+    </div>
+
+    <!-- Мобільне меню (випадаюче) -->
+    <div class="nav-links mobile" id="navMenu">
       <a href="Index.html">Головна</a>
       <a href="Us.html">Про нас</a>
       <a href="#">Новини</a>
@@ -192,7 +216,6 @@
 </header>
 
 <main>
-
   <section>
     <h2>Про наш ліцей</h2>
     <p>
@@ -203,12 +226,10 @@
 
   <section>
     <h2>Новини</h2>
-
     <article>
       <h3>Олімпіада з математики</h3>
       <p>Учні нашого ліцею здобули призові місця на міській олімпіаді.</p>
     </article>
-
     <article>
       <h3>Спортивні змагання</h3>
       <p>Команда школи перемогла у районному турнірі з футболу.</p>
@@ -221,7 +242,6 @@
     <p>📞 Телефон: +380 00 000 00 00</p>
     <p>✉ Email: school@email.ua</p>
   </section>
-
 </main>
 
 <footer>
@@ -229,21 +249,29 @@
 </footer>
 
 <script>
-// Простий JS для бургер-меню (можна замінити на :checked + label, якщо хочете без JS)
 document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.querySelector('.hamburger');
   const navMenu = document.querySelector('#navMenu');
 
-  hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-  });
-
-  // Закриваємо меню при кліку по посиланню (зручно на мобільних)
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-      navMenu.classList.remove('active');
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
     });
-  });
+
+    // Закриття при кліку на пункт меню
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // Закриття при кліку поза меню (опціонально, але зручно)
+    document.addEventListener('click', (e) => {
+      if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+        navMenu.classList.remove('active');
+      }
+    });
+  }
 });
 </script>
 
