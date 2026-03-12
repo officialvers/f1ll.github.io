@@ -1,62 +1,251 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-<meta charset="UTF-8">
-<title>Ліцей №1</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ліцей №1</title>
+  
+  <style>
+    /* Скидаємо базові відступи */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f9f9f9;
+    }
+
+    /* ── Навігація ── */
+    nav {
+      background-color: #1e40af;
+      color: white;
+      padding: 1rem;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #dbeafe;
+    }
+
+    /* Бургер-іконка */
+    .hamburger {
+      display: none;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* ── Шапка ── */
+    header {
+      background: linear-gradient(to right, #1e3a8a, #3b82f6);
+      color: white;
+      text-align: center;
+      padding: 4rem 1rem 3rem;
+    }
+
+    header h1 {
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      margin-bottom: 0.8rem;
+    }
+
+    header p {
+      font-size: clamp(1.1rem, 4vw, 1.4rem);
+      opacity: 0.95;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* ── Основний контент ── */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    section {
+      margin-bottom: 3.5rem;
+    }
+
+    h2 {
+      color: #1e40af;
+      margin-bottom: 1.2rem;
+      font-size: clamp(1.6rem, 5vw, 2.2rem);
+    }
+
+    article {
+      background: white;
+      padding: 1.4rem;
+      margin-bottom: 1.2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    /* ── Контакти ── */
+    .contacts p {
+      font-size: 1.1rem;
+      margin: 0.6rem 0;
+    }
+
+    /* ── Футер ── */
+    footer {
+      background-color: #1e293b;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    /* ── Мобільна версія ── */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #1e40af;
+        padding: 1rem;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      header {
+        padding: 3rem 1rem 2.5rem;
+      }
+
+      main {
+        padding: 1.5rem 1rem;
+      }
+    }
+
+    /* Дуже маленькі екрани (наприклад < 380px) */
+    @media (max-width: 480px) {
+      header {
+        padding: 2.5rem 0.8rem 2rem;
+      }
+
+      .contacts p {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <nav>
-<a href="Index.html">Головна</a>
-<a href="Us.html">Про нас</a>
-<a href="#">Новини</a>
-<a href="#">Контакти</a>
+  <div class="nav-container">
+    <div class="logo">Ліцей №1</div>
+    
+    <button class="hamburger" aria-label="Відкрити меню">☰</button>
+    
+    <div class="nav-links" id="navMenu">
+      <a href="Index.html">Головна</a>
+      <a href="Us.html">Про нас</a>
+      <a href="#">Новини</a>
+      <a href="#">Контакти</a>
+    </div>
+  </div>
 </nav>
 
 <header>
-<h1>Ліцей №1</h1>
-<p>Сучасний заклад освіти для майбутнього України</p>
+  <h1>Ліцей №1</h1>
+  <p>Сучасний заклад освіти для майбутнього України</p>
 </header>
 
 <main>
 
-<section>
-<h2>Про наш ліцей</h2>
-<p>
-Наш ліцей — це місце, де учні отримують якісну освіту, 
-розвивають свої таланти та готуються до майбутнього.
-</p>
-</section>
+  <section>
+    <h2>Про наш ліцей</h2>
+    <p>
+      Наш ліцей — це місце, де учні отримують якісну освіту, 
+      розвивають свої таланти та готуються до майбутнього.
+    </p>
+  </section>
 
-<section>
-<h2>Новини</h2>
+  <section>
+    <h2>Новини</h2>
 
-<article>
-<h3>Олімпіада з математики</h3>
-<p>Учні нашого ліцею здобули призові місця на міській олімпіаді.</p>
-</article>
+    <article>
+      <h3>Олімпіада з математики</h3>
+      <p>Учні нашого ліцею здобули призові місця на міській олімпіаді.</p>
+    </article>
 
-<article>
-<h3>Спортивні змагання</h3>
-<p>Команда школи перемогла у районному турнірі з футболу.</p>
-</article>
+    <article>
+      <h3>Спортивні змагання</h3>
+      <p>Команда школи перемогла у районному турнірі з футболу.</p>
+    </article>
+  </section>
 
-</section>
-
-<section>
-<h2>Контакти</h2>
-<p>📍 Адреса: м. Україна</p>
-<p>📞 Телефон: +380 00 000 00 00</p>
-<p>✉ Email: school@email.ua</p>
-</section>
+  <section class="contacts">
+    <h2>Контакти</h2>
+    <p>📍 Адреса: м. Україна</p>
+    <p>📞 Телефон: +380 00 000 00 00</p>
+    <p>✉ Email: school@email.ua</p>
+  </section>
 
 </main>
 
 <footer>
-<p>© 2026 Ліцей №1</p>
+  <p>© 2026 Ліцей №1</p>
 </footer>
+
+<script>
+// Простий JS для бургер-меню (можна замінити на :checked + label, якщо хочете без JS)
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('#navMenu');
+
+  hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+  });
+
+  // Закриваємо меню при кліку по посиланню (зручно на мобільних)
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('active');
+    });
+  });
+});
+</script>
 
 </body>
 </html>
